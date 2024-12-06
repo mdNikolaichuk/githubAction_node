@@ -27,7 +27,11 @@ jobs:
       
       # Запуск проєкту
       - name: Run project
-        run: node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }}
+        run: |
+          node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }}
+          sleep 5
+          curl http://localhost:5000/products
+          curl http://localhost:3000/products
       
       # "Заглушка" для тестів
       - name: Run tests
