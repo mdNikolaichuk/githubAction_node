@@ -32,7 +32,7 @@ jobs:
         run: |
           node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
           sleep 5  # Очікуємо, поки сервер запуститься
-          curl -f http://localhost:5000/products || (echo "Error: Server not reachable" && exit 1)  # Якщо сервер недоступний, вивести помилку і завершити
+          curl -f http://localhost:5001/products || (echo "Error: Server not reachable" && exit 1)  # Якщо сервер недоступний, вивести помилку і завершити
           kill $(jobs -p)  # Зупинка сервера
       
       # "Заглушка" для тестів
