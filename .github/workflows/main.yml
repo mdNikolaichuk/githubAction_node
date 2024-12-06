@@ -3,12 +3,15 @@ name: GitHub actions nodeJS
 on:
   push:
   workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build-and-run-nodeJS:
     runs-on: ubuntu-latest
-
-
+    
     steps:
 
      # Клонування репозиторію
