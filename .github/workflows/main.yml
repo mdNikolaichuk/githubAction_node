@@ -27,7 +27,10 @@ jobs:
       
       # Запуск проєкту
       - name: Run project
-        run: npm start
+        run: node index.js --p ${{ env.PORT }} --cp ${{ env.CLIENT_PORT }}
+        env:
+          PORT: ${{ secrets.PORT }}
+          CLIENT_PORT: ${{ secrets.CLIENT_PORT }}
       
       # "Заглушка" для тестів
       - name: Run tests
