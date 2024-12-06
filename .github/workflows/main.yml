@@ -30,7 +30,9 @@ jobs:
       - name: Run project
         if: success()
         run: |
-          node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
+          node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} & # Запуск сервера у фоновому режимі
+          sleep 5  # Очікуємо що б все запустилось
+          
           curl http://localhost:5000/products  # Перевірка доступності сервера на порту 5000
 
       
