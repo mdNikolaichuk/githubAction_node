@@ -28,10 +28,10 @@ jobs:
       # Запуск проєкту
       - name: Run project
         run: |
-          node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }}
-          sleep 5
-          curl http://localhost:5000/products
-          curl http://localhost:3000/products
+          node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
+          sleep 5  # Дочекайтесь, поки сервер повністю запуститься
+          curl http://localhost:5000/products  # Перевірка доступності сервера на порту 5000
+          curl http://localhost:3000/products  # Перевірка доступності сервера на порту 3000
       
       # "Заглушка" для тестів
       - name: Run tests
