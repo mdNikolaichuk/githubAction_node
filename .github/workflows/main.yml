@@ -1,0 +1,33 @@
+name: GitHub actions nodeJS
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build-and-run-nodeJS:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Встановлення Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm' 
+
+      # Клонування репозиторію
+      - name: Check out repository code
+        uses: actions/checkout@v4
+      
+      # Встановлення залежностей
+      - name: Install dependencies
+        run: npm install
+      
+      # Запуск проєкту
+      - name: Run project
+        run: npm start
+      
+      # "Заглушка" для тестів
+      - name: Run tests
+        run: echo "No tests to run"
