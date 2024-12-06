@@ -31,9 +31,10 @@ jobs:
         if: success()
         run: |
           node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
-          sleep 5  # Дочекайтесь, поки сервер повністю запуститься
           curl http://localhost:5000/products  # Перевірка доступності сервера на порту 5000
           curl http://localhost:3000/products  # Перевірка доступності сервера на порту 3000
+          sleep 5  # Дочекайтесь, поки сервер повністю запуститься
+
       
       # "Заглушка" для тестів
       - name: Run tests
