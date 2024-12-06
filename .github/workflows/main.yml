@@ -23,10 +23,12 @@ jobs:
       
       # Встановлення залежностей
       - name: Install dependencies
+        if: success()
         run: npm install
       
       # Запуск проєкту
       - name: Run project
+        if: success()
         run: |
           node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
           sleep 5  # Дочекайтесь, поки сервер повністю запуститься
