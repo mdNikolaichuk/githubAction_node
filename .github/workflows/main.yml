@@ -41,5 +41,8 @@ jobs:
           kill $(jobs -p)  # Зупинка сервера
       
       # "Заглушка" для тестів
-      - name: Run Dependabot
-        uses: dependabot/fetch-metadata@v1
+      - name: Run TruffleHog
+        uses: trufflesecurity/trufflehog-actions-scan@v2
+        with:
+          scan: repository
+          github_token: ${{ secrets.GITHUB_TOKEN }}
