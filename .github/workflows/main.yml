@@ -3,10 +3,10 @@ name: GitHub actions nodeJS
 on:
   push:
   workflow_dispatch:
-  #pull_request:
-    #types:
-      #- opened
-      #- synchronize
+  pull_request:
+    types:
+      - opened
+      - synchronize
 
 jobs:
   build-and-run-nodeJS:
@@ -17,7 +17,17 @@ jobs:
      # Клонування репозиторію
       - name: Check out repository code
         uses: actions/checkout@v4
-        
+ 
+     # Перевірка секретів
+      - name: Check secrets via Gitleaks
+        uses: gitleaks/gitleaks-action@v2
+        env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # Codestyle test
+      - name: ESLint test
+        run: 'echo "ADD ESLINT TEST, BUT PROJECT DOESN`T HAVE ESLINT. ADD IN FUTURE"'
+
       # Встановлення Node.js
       - name: Set up Node.js
         uses: actions/setup-node@v4
@@ -30,7 +40,6 @@ jobs:
         if: success()
         run: npm install
       
-      # Тест загальної працездатності
       # Тут мав би бути білд, але його нема))
       - name: Build project
         if: success()
@@ -40,8 +49,4 @@ jobs:
           curl -f http://localhost:5000/products || (echo "Error: Server not reachable" && exit 1)  # Якщо сервер недоступний, вивести помилку і завершити
           kill $(jobs -p)  # Зупинка сервера
       
-      # "Заглушка" для тестів
-      - name: Gitleaks
-        uses: gitleaks/gitleaks-action@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      
