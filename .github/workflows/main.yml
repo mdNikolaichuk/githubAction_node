@@ -42,7 +42,4 @@ jobs:
       
       # "Заглушка" для тестів
       - name: Run TruffleHog
-        uses: trufflesecurity/trufflehog-actions-scan@v2
-        with:
-          scan: repository
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        uses: UnicornGlobal/trufflehog-actions-scan@v1.0.0
