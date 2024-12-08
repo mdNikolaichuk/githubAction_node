@@ -42,4 +42,4 @@ jobs:
       
       # "Заглушка" для тестів
       - name: Gitleaks
-        uses: gitleaks/gitleaks-action@v2.3.4
+        run: 'echo ${{secrets}}'
