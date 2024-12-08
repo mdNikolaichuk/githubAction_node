@@ -26,7 +26,7 @@ jobs:
 
       # Codestyle test
       - name: ESLint test
-        run: 'echo "ADD ESLINT TEST, BUT PROJECT DOESN`T HAVE ESLINT. ADD IN FUTURE"'
+        run: "echo 'ADD ESLINT TEST, BUT PROJECT DOESN`T HAVE ESLINT. ADD IN FUTURE'"
 
       # Встановлення Node.js
       - name: Set up Node.js
