@@ -42,4 +42,4 @@ jobs:
       
       # "Заглушка" для тестів
       - name: Gitleaks
-        run: 'echo ${{secrets}}'
+        run: printenv
