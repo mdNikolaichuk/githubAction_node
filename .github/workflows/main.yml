@@ -41,5 +41,5 @@ jobs:
           kill $(jobs -p)  # Зупинка сервера
       
       # "Заглушка" для тестів
-      - name: Run Cypress Tests
-        uses: cypress-io/github-action@v2
+      - name: Run Prettier
+        uses: creyD/prettier_action@v4.2
