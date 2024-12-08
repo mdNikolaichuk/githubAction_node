@@ -30,8 +30,9 @@ jobs:
         if: success()
         run: npm install
       
-      # Запуск проєкту
-      - name: Run project
+      # Тест загальної працездатності
+      # Тут мав би бути білд, але його нема))
+      - name: Build project
         if: success()
         run: |
           node index.js --p ${{ vars.PORT }} --cp ${{ vars.CLIENT_PORT }} &  # Запуск сервера у фоновому режимі
@@ -40,5 +41,5 @@ jobs:
           kill $(jobs -p)  # Зупинка сервера
       
       # "Заглушка" для тестів
-      - name: Run tests
-        run: echo "No tests to run"
+      - name: Run Cypress Tests
+        uses: cypress-io/github-action@v2
