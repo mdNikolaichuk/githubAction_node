@@ -41,5 +41,5 @@ jobs:
           kill $(jobs -p)  # Зупинка сервера
       
       # "Заглушка" для тестів
-      - name: Run TruffleHog
-        uses: UnicornGlobal/trufflehog-actions-scan@v1.0.0
+      - name: Gitleaks
+        uses: gitleaks/gitleaks-action@v2.3.4
